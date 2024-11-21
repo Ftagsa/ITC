@@ -12,10 +12,10 @@
    
 <label for="feet" id="resultLabel">Length in Feet:</label>  
 <input id="feet" name="feet" type="number" readonly></input></p>
+<br>
 
-<br> 
 <p>  
-  <a href="index.html">Back to Home Page</a>
+ <a href="index.html">Back to Home Page</a>
 </p>
 
 <script>
@@ -23,11 +23,9 @@ function convertToFeet()
 {
   let meters = document.getElementById("meters").value * 1;
   let feet = meters * 3.28084;
-  document.getElementById("resultLabel").innerHTML = 
-      'The length in Feet is:';
+  document.getElementById("resultLabel").innerHTML = 'The length in Feet is:';
   document.getElementById("feet").value = feet.toFixed(2);
 }
-
 function clearValues()
 {
   document.getElementById("meters").value = '';
