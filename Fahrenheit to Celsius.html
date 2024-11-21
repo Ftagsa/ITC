@@ -2,9 +2,38 @@
 <html>
 <body>
 
-<h1>Fahrenheit to Celsius</h1>
+<h1>Fahrenheit to Celsius Converter</h1>
 
-<p>My first paragraph.</p>
+<p>
+<label for="fahrenheit">Temperature in Fahrenheit</label> 
+<input id="fahrenheit" name="fahrenheit" type="number" onkeyup="convertToFahrenheit()">
+<button onclick="clearValues()">Clear Values</button>
+</p>
+   
+<label for="celsius" id="resultLabel">Temperature in Celsius:</label>  
+<input id="celsius" name="celsius" type="number" readonly></input></p>
 
+<br> 
+<p>  
+  <a href="index.html">Back to Home Page</a>
+</p>
+
+<script>
+function convertToFahrenheit() {
+  
+  let fahrenheit = document.getElementById("fahrenheit").value * 1;
+  let celsius = (fahrenheit - 32) * 5 / 9;
+  document.getElementById("resultLabel").innerHTML = 
+      'The temperature in Celsius is:';
+  document.getElementById("celsius").value = celsius.toFixed(2);
+}
+
+function clearValues() {
+  document.getElementById("fahrenheit").value = '';
+  document.getElementById("resultLabel").innerHTML = 'Temperature in Celsius:';
+  document.getElementById("celsius").value = '';
+}
+
+</script>
 </body>
 </html>
