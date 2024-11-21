@@ -1,0 +1,44 @@
+ <!DOCTYPE html>
+<html>
+<body>
+
+<h1>Celsius to Fahrenheit Converter</h1>
+
+<p>
+<label for="celsius">Temperature in Celsius</label> 
+<input id="celsius" name="celsius" type="number" onkeyup="convertToFahrenheit()">
+<button onclick="clearValues()">Clear Values</button>
+</p>
+   
+<label for="fahrenheit" id="resultLabel">Temperature in Fahrenheit:</label>  
+<input id="fahrenheit" name="fahrenheit" type="number" readonly></input></p>
+
+<br> 
+<p>  
+  <a href="index.html">Back to Home Page</a>
+</p>
+
+<script>
+function convertToFahrenheit() {
+  // Retrieve user input
+  let celsius = document.getElementById("celsius").value * 1; // Convert to number
+
+  // Convert to Fahrenheit
+  let fahrenheit = (celsius * 9 / 5) + 32;
+
+  // Display the result
+  document.getElementById("resultLabel").innerHTML = 
+      'The temperature in Fahrenheit is:';
+  document.getElementById("fahrenheit").value = fahrenheit.toFixed(2); // Show 2 decimal places
+}
+
+function clearValues() {
+  // Clear all values
+  document.getElementById("celsius").value = '';
+  document.getElementById("resultLabel").innerHTML = 'Temperature in Fahrenheit:';
+  document.getElementById("fahrenheit").value = '';
+}
+</script>
+
+</body>
+</html>
