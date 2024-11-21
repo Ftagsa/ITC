@@ -1,0 +1,40 @@
+ <!DOCTYPE html>
+<html>
+<body>
+
+<h1>Meters to Feet Converter</h1>
+
+<p>
+<label for="meters">Length in Meters</label> 
+<input id="meters" name="meters" type="number" onkeyup="convertToFeet()">
+<button onclick="clearValues()">Clear Values</button>
+</p>
+   
+<label for="feet" id="resultLabel">Length in Feet:</label>  
+<input id="feet" name="feet" type="number" readonly></input></p>
+
+<br> 
+<p>  
+  <a href="index.html">Back to Home Page</a>
+</p>
+
+<script>
+function convertToFeet()
+{
+  let meters = document.getElementById("meters").value * 1;
+  let feet = meters * 3.28084;
+  document.getElementById("resultLabel").innerHTML = 
+      'The length in Feet is:';
+  document.getElementById("feet").value = feet.toFixed(2);
+}
+
+function clearValues()
+{
+  document.getElementById("meters").value = '';
+  document.getElementById("resultLabel").innerHTML = 'Length in Feet:';
+  document.getElementById("feet").value = '';
+}
+  
+</script>
+</body>
+</html>
