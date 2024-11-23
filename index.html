@@ -1,24 +1,113 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <title>Simple Computations in JavaScript</title>
+</head>
 <body>
 
-<h1>Simple Computations in Javascript</h1>
+<h1>Simple Computations in JavaScript</h1>
 <h3>By: Franzine Mae M. Tagsa</h3>
-<br></br>
 
-<p>Conversion:</p>
+<button onclick="openTab(event, 'FahrenheitToCelsius')">Fahrenheit to Celsius</button>
+<button onclick="openTab(event, 'CelsiusToFahrenheit')">Celsius to Fahrenheit</button>
+<button onclick="openTab(event, 'FeetToMeters')">Feet to Meters</button>
+<button onclick="openTab(event, 'MetersToFeet')">Meters to Feet</button>
 
-<a href="FahrenheittoCelsius.html">Fahrenheit to Celsius</a>
-<br></br>
+<section id="FahrenheitToCelsius" style="display: none;">
+    <h2>Fahrenheit to Celsius Converter</h2>
+    <label for="fahrenheit">Temperature in Fahrenheit</label>
+    <input id="fahrenheit" type="number" onkeyup="convertToCelsius()">
+    <button onclick="clearFahrenheit()">Clear Values</button>
+    <label id="fahrenheitToCelsiusLabel">Temperature in Celsius:</label>
+    <input id="celsiusFahrenheit" type="number" readonly>
+</section>
 
-<a href="CelsiustoFahrenheit.html">Celsius to Fahrenheit</a>
-<br></br>
+<section id="CelsiusToFahrenheit" style="display: none;">
+    <h2>Celsius to Fahrenheit Converter</h2>
+    <label for="celsius">Temperature in Celsius</label>
+    <input id="celsius" type="number" onkeyup="convertToFahrenheit()">
+    <button onclick="clearCelsius()">Clear Values</button>
+    <label id="celsiusToFahrenheitLabel">Temperature in Fahrenheit:</label>
+    <input id="fahrenheitCelsius" type="number" readonly>
+</section>
 
-<a href="FeettoMeters.html">Feet to Meters</a>
-<br></br>
+<section id="FeetToMeters" style="display: none;">
+    <h2>Feet to Meters Converter</h2>
+    <label for="feet">Length in Feet</label>
+    <input id="feet" type="number" onkeyup="convertToMeters()">
+    <button onclick="clearFeet()">Clear Values</button>
+    <label id="feetToMetersLabel">Length in Meters:</label>
+    <input id="metersFeet" type="number" readonly>
+</section>
 
-<a href="MeterstoFeet.html">Meters to Feet</a>
-<br></br>
+<section id="MetersToFeet" style="display: none;">
+    <h2>Meters to Feet Converter</h2>
+    <label for="meters">Length in Meters</label>
+    <input id="meters" type="number" onkeyup="convertToFeet()">
+    <button onclick="clearMeters()">Clear Values</button>
+    <label id="metersToFeetLabel">Length in Feet:</label>
+    <input id="feetMeters" type="number" readonly>
+</section>
 
+<script>
+function openTab(event, tabName) {
+    const sections = document.querySelectorAll('section');
+    sections.forEach(section => section.style.display = 'none');
+    document.getElementById(tabName).style.display = 'block';
+}
+
+function convertToCelsius() {
+    const fahrenheit = document.getElementById('fahrenheit').value * 1;
+    const celsius = (fahrenheit - 32) * 5 / 9;
+    document.getElementById('fahrenheitToCelsiusLabel').textContent = 'The temperature in Celsius is:';
+    document.getElementById('celsiusFahrenheit').value = celsius.toFixed(2);
+}
+
+function convertToFahrenheit() {
+    const celsius = document.getElementById('celsius').value * 1;
+    const fahrenheit = (celsius * 9 / 5) + 32;
+    document.getElementById('celsiusToFahrenheitLabel').textContent = 'The temperature in Fahrenheit is:';
+    document.getElementById('fahrenheitCelsius').value = fahrenheit.toFixed(2);
+}
+
+function convertToMeters() {
+    const feet = document.getElementById('feet').value * 1;
+    const meters = feet * 0.3048;
+    document.getElementById('feetToMetersLabel').textContent = 'The length in Meters is:';
+    document.getElementById('metersFeet').value = meters.toFixed(2);
+}
+
+function convertToFeet() {
+    const meters = document.getElementById('meters').value * 1;
+    const feet = meters * 3.28084;
+    document.getElementById('metersToFeetLabel').textContent = 'The length in Feet is:';
+    document.getElementById('feetMeters').value = feet.toFixed(2);
+}
+
+function clearFahrenheit() {
+    document.getElementById('fahrenheit').value = '';
+    document.getElementById('fahrenheitToCelsiusLabel').textContent = 'Temperature in Celsius:';
+    document.getElementById('celsiusFahrenheit').value = '';
+}
+
+function clearCelsius() {
+    document.getElementById('celsius').value = '';
+    document.getElementById('celsiusToFahrenheitLabel').textContent = 'Temperature in Fahrenheit:';
+    document.getElementById('fahrenheitCelsius').value = '';
+}
+
+function clearFeet() {
+    document.getElementById('feet').value = '';
+    document.getElementById('feetToMetersLabel').textContent = 'Length in Meters:';
+    document.getElementById('metersFeet').value = '';
+}
+
+function clearMeters() {
+    document.getElementById('meters').value = '';
+    document.getElementById('metersToFeetLabel').textContent = 'Length in Feet:';
+    document.getElementById('feetMeters').value = '';
+}
+
+</script>
 </body>
 </html>
