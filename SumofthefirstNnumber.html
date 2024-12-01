@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Sum of the First N Natural Numbers Using a Do While Loop</h1>
+<br>
+
+<p>
+<label for="nlimit">Input a value:</label>
+<input id="nlimit" type="number"></input>
+<button id="btncompute">Compute Sum</button>
+
+<h3 id="ntitle"></h3>
+<p id="result"></p>
+
+<p>
+<a href="index.html">Back to Home Page</a>
+</p>
+<br>
+
+<script>
+    document.getElementById("btncompute").addEventListener("click", () => {    
+
+    var nlimit, i, sum;
+
+    nlimit = document.getElementById("nlimit").value;
+    sum = 0;
+    i = 1;
+
+    do 
+    {
+        sum += i;
+        i++;
+    } 
+    while (i <= nlimit);
+
+    document.getElementById("ntitle").innerHTML = "Sum of the first " + nlimit + " natural numbers is:";
+
+    document.getElementById("result").innerHTML = sum;
+
+    });    
+
+</script>
+</body>
+</html>
