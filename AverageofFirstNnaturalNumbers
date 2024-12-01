@@ -21,10 +21,10 @@
 
 <script>
 
- document.getElementById("btncompute").addEventListener("click", () => {    
+ document.getElementById("btncompute").addEventListener("click", () => 
+{    
 
     var nlimit, i, sum, average;
-
     nlimit = document.getElementById("nlimit").value;
 
     sum = 0;
@@ -37,7 +37,6 @@
 
     document.getElementById("ntitle").innerHTML =
       "The average of the first " + nlimit + " natural numbers is:";
-
     document.getElementById("result").innerHTML = average;
 
 });   
