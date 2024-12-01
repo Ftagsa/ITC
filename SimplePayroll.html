@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<body onload="initPayroll()">
+
+<h1>Employee Payroll Management</h1>
+<br>
+
+<p>
+<label for="empName">Employee Name:</label>
+<input id="empName" type="text">
+<label for="daysWorked">Days Worked:</label>
+<input id="daysWorked" type="number">
+<label for="dailyRate">Daily Rate:</label>
+<input id="dailyRate" type="number">
+<label for="deduction">Deduction Amount:</label>
+<input id="deduction" type="number">
+<button id="btnAddEmployee">Add Employee</button>
+<button id="btnDeleteEmployee">Delete Employee</button>
+</p>
+
+<h3 id="payrollTitle">Payroll List</h3>
+<table id="payrollTable" border="1">
+  <thead>
+    <tr>
+      <th>No.</th>
+      <th>Employee Name</th>
+      <th>Days Worked</th>
+      <th>Daily Rate</th>
+      <th>Gross Pay</th>
+      <th>Deduction Amount</th>
+      <th>Net Pay</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  </tbody>
+</table>
+
+<p>
+<a href="index.html">Back to Home Page</a>
+</p>
+
+<script>
+var payroll = [];
+function initPayroll() 
+{
+    document.getElementById("payrollTitle").innerHTML = "Payroll List";
+    updatePayrollTable();
+}
+
+function updatePayrollTable() 
+{
+    let tableBody = document.getElementById("payrollTable").getElementsByTagName('tbody')[0];
+    tableBody.innerHTML = "";
+
+    payroll.forEach((employee, index) => 
+    {
+        let row = tableBody.insertRow();
+        row.insertCell(0).innerHTML = index + 1;
+        row.insertCell(1).innerHTML = employee.name;
+        row.insertCell(2).innerHTML = employee.daysWorked;
+        row.insertCell(3).innerHTML = employee.dailyRate;
+        row.insertCell(4).innerHTML = (employee.daysWorked * employee.dailyRate).toFixed(2);
+        row.insertCell(5).innerHTML = employee.deduction.toFixed(2);
+        row.insertCell(6).innerHTML = (employee.daysWorked * employee.dailyRate - employee.deduction).toFixed(2);
+    });
+}
+
+document.getElementById("btnAddEmployee").addEventListener("click", () => 
+{
+    var empName = document.getElementById("empName").value;
+    var daysWorked = parseInt(document.getElementById("daysWorked").value);
+    var dailyRate = parseFloat(document.getElementById("dailyRate").value);
+    var deduction = parseFloat(document.getElementById("deduction").value);
+
+    if (empName && !isNaN(daysWorked) && !isNaN(dailyRate) && !isNaN(deduction)) 
+    {
+
+        var grossPay = daysWorked * dailyRate;
+        var netPay = grossPay - deduction;
+
+        payroll.push
+        ({
+            name: empName,
+            daysWorked: daysWorked,
+            dailyRate: dailyRate,
+            deduction: deduction,
+            grossPay: grossPay,
+            netPay: netPay
+        });
+
+        updatePayrollTable();
+    } 
+    else 
+    {
+        alert("Please enter all fields correctly.");
+    }
+
+    document.getElementById("empName").value = "";
+    document.getElementById("daysWorked").value = "";
+    document.getElementById("dailyRate").value = "";
+    document.getElementById("deduction").value = "";
+});
+
+document.getElementById("btnDeleteEmployee").addEventListener("click", () => {
+    var lineNumber = parseInt(prompt("Enter the Line Number to delete (1-based index):"));
+
+    if (!isNaN(lineNumber) && lineNumber >= 1 && lineNumber <= payroll.length) 
+    {
+        payroll.splice(lineNumber - 1, 1);
+        updatePayrollTable();
+    } 
+    else
+    {
+        alert("Invalid Line Number.");
+    }
+
+});
+
+</script>
+</body>
+</html>
