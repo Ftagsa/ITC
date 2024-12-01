@@ -2,7 +2,7 @@
 <html>
 <body>
 
-<h1>Sum of the First N Natural Numbers Using a Do While Loop</h1>
+<h1>Sum of the First N Natural Numbers</h1>
 <br>
 
 <p>
@@ -19,10 +19,10 @@
 <br>
 
 <script>
-    document.getElementById("btncompute").addEventListener("click", () => {    
-
+    document.getElementById("btncompute").addEventListener("click", () => 
+    {    
+        
     var nlimit, i, sum;
-
     nlimit = document.getElementById("nlimit").value;
     sum = 0;
     i = 1;
@@ -35,7 +35,6 @@
     while (i <= nlimit);
 
     document.getElementById("ntitle").innerHTML = "Sum of the first " + nlimit + " natural numbers is:";
-
     document.getElementById("result").innerHTML = sum;
 
     });    
