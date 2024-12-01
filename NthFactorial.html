@@ -2,7 +2,7 @@
 <html>
 <body>
 
-<h1>Compute N Factorial Using a While Loop</h1>
+<h1>Compute N Factorial</h1>
 <br>
 
 <p>
@@ -20,7 +20,8 @@
 <br>
 
 <script>
-    document.getElementById("btncompute").addEventListener("click", () => {
+    document.getElementById("btncompute").addEventListener("click", () => 
+     {
 
     var nlimit, i, factorial;
 
@@ -28,14 +29,13 @@
     factorial = 1;
 
     i = 1;
-
-    while (i <= nlimit) {
+    while (i <= nlimit) 
+    {
         factorial *= i;
         i++;
     }
 
     document.getElementById("ntitle").innerHTML = "Factorial of " + nlimit + " is:";
-
     document.getElementById("result").innerHTML = factorial;
 
     });    
